@@ -4,14 +4,18 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ResponsiveAppBar from './Components/Header.js';
-
+import GuestlistList from './Components/GuestlistList.js';
 
 
 function App() {
   return ( 
-              
-    <div>
-      <ResponsiveAppBar />
+    <div>         
+      <div>
+        <ResponsiveAppBar />
+      </div>
+      <Box sx={{justifyContent:'center'}} >
+        <GuestlistList />
+      </Box>
     </div>
   );
 }

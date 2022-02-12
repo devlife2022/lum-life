@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 firebase.initializeApp({
   apiKey: "AIzaSyC8pfggaIbDBkTTpMxltiSsTapIuH3HAds",
