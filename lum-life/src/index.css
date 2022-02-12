@@ -16,3 +16,13 @@ code {
 }
 
 
+.Top-Navigation-Bar {
+  padding: 12px;
+  margin: 12px;
+  justify-content: center;
+}
+
+.Top-Navigation-Bar-Logo {
+  color: white;
+  font-size: 6vw ;
+}
