@@ -35,6 +35,13 @@ firebase.firestore()
   	alignItems="center"
   	justifyContent="center"
   >
+
+  <Grid item>
+  	<Box sx={{marginTop: 4}}>
+  		<h1 style={{color:'white'}}>Weekly Guestlist</h1>
+  	</Box>
+  </Grid>
+
   	<Grid item>
 	    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
@@ -56,19 +63,6 @@ firebase.firestore()
 	          </div>
 	          )
     	})}
-    		{/*
-	          <ListItem disablePadding>
-	            <ListItemButton>
-	              <ListItemText primary="Testing Testing Testing" />
-	            </ListItemButton>
-	          </ListItem>
-	          <Divider />
-	          <ListItem disablePadding>
-	            <ListItemButton component="a" href="#simple-list">
-	              <ListItemText primary="Spam" />
-	            </ListItemButton>
-	          </ListItem>
-	         */}
 	        </List>
 	      </nav>
 	    </Box>

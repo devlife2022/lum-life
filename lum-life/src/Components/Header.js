@@ -9,10 +9,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
-
+import TwitterIcon from '@mui/icons-material/Twitter';
+import Link from '@mui/material/Link'
+import Grid from '@mui/material/Grid';
 
 
 const pages = ['FAQ', 'History'];
@@ -46,16 +48,64 @@ const ResponsiveAppBar = () => {
     <AppBar style={{background: "#f6a4af"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+
+
+    {/* This section is for a md+ screen */}
+    <Box sx={{display:{ xs: 'none', md: 'flex' }, justifyContent: 'space-between', width: '100%'} }>
+        <Grid container
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        	<Grid item xs={4}>
           <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            variant="h4"
+            sx={{ my: 2}}
           >
             Lum Life
           </Typography>
+        </Grid>
+        <Grid item xs={4} align="center">
+        	<Link href="https://twitter.com/HoodlumsNFT" target="_blank">
+            	<TwitterIcon  sx={{ my: 3, color: 'white', display: 'block'}} />   
+            </Link>    
+        </Grid>
+        <Grid item xs={4} align="end">
+        	<ButtonGroup variant="text">
+	        {pages.map((page) => (
+	          <Button
+	            key={page}
+	            onClick={handleCloseNavMenu}
+	            sx={{ color: 'white', display: 'block', fontWeight:'bold' }}
+	          >
+	            {page}
+	          </Button>
+	        ))}
+	        </ButtonGroup>
+      	</Grid>
+      </Grid>          
+    </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
+    {/* This section is for a less than md screen */}
+    <Box sx={{display:{ xs: 'flex', md: 'none' }, justifyContent: 'space-between', width: '100%'} }>
+    	 <Grid container
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        <Grid item xs={4}>
+          <Typography
+            variant="h5"
+            sx={{ my: 2}}
+          >
+            Lum Life
+          </Typography>
+        </Grid>
+        <Grid item xs={4} align="center">
+        	<Link href="https://twitter.com/HoodlumsNFT" target="_blank">
+            	<TwitterIcon  sx={{ my: 3, color: 'white', display: 'block'}} />   
+            </Link>    
+        </Grid>
+          <Grid item xs={4} align="end">
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -63,6 +113,7 @@ const ResponsiveAppBar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{ my:2 }}
             >
               <MenuIcon />
             </IconButton>
@@ -90,26 +141,10 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            Lum Life
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+          </Grid>
+         </Grid>
+    </Box>
+          
 {/*    Will come back to this.
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

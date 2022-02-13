@@ -13,7 +13,7 @@ function App() {
       <div>
         <ResponsiveAppBar />
       </div>
-      <Box sx={{justifyContent:'center'}} >
+      <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
         <GuestlistList />
       </Box>
     </div>
