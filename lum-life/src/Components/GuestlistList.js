@@ -14,20 +14,23 @@ import firebase from "firebase/compat/app";
 export default function GuestlistList() {
 
 const [guestlists, setGuestlists] = useState();
+const [guestlistsSorted, setGuestlistsSorted] = useState();
 
 useEffect(() => {
 firebase.firestore()
 .collection("guestlists")
 .get()
 .then(guestlists => {
-	console.log(guestlists.docs.event_name);
 	setGuestlists(guestlists.docs)
 	console.log(guestlists.docs[0].data())
+
 });
 }, []);
 
 
   return (
+
+
   <Grid
   	container
   	spacing={0}
@@ -43,21 +46,20 @@ firebase.firestore()
   </Grid>
 
   	<Grid item>
-	    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: 4}}>
+	    <Box sx={{  maxWidth: 420, bgcolor: 'background.paper', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 
 	        {
-    		guestlists && guestlists.map(guestlist => {
+    		guestlists && guestlists.sort((a,b) => b.data().event_date.seconds - a.data().event_date.seconds).map(guestlist => {
     		return(
-    			<div>
-    			<ListItem disablePadding key={guestlist.id}>
+    			<div fontSize="12px" key={guestlist.id}>
+    			<ListItem disablePadding >
     				 <ListItemButton>
     				 	<ListItemText>
     				 	{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
     				 	</ListItemText>
     			 	</ListItemButton>
-
 	          </ListItem>
 	          <Divider />
 	          </div>
