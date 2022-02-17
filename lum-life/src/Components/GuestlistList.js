@@ -71,7 +71,7 @@ firebase.firestore()
   </Grid>
 
   	<Grid item>
-	    <Box sx={{  maxWidth: 500, minWidth: 450, bgcolor: 'white', margin: 4}}>
+	    <Box sx={{  maxWidth: 500,  bgcolor: 'white', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 	        {
@@ -110,7 +110,7 @@ firebase.firestore()
   </Grid>
 
     <Grid item>
-    	 <Box sx={{  maxWidth: 500, minWidth: 450, bgcolor: 'background.paper', margin: 4}}>
+    	 <Box sx={{  maxWidth: 500,  bgcolor: 'background.paper', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 	        {
