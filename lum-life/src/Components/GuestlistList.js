@@ -71,7 +71,7 @@ firebase.firestore()
   </Grid>
 
   	<Grid item>
-	    <Box sx={{  maxWidth: 420, bgcolor: 'white', margin: 4}}>
+	    <Box sx={{  maxWidth: 500, minWidth: 450, bgcolor: 'white', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 	        {
@@ -81,14 +81,13 @@ firebase.firestore()
 		    				<ListItem divider disablePadding >
 
 		    					<ListItemIcon style={{minWidth: '0px', margin: 2}}>
-                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon /> : <MusicNoteIcon />}
+                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
               		</ListItemIcon>
 
 
 		    					<ListItemButton>
 		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
 		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
-		    				 			{guestlist.data().event_type}
 		    				 		</ListItemText>
 		    			 		</ListItemButton>
 			          </ListItem>
@@ -103,14 +102,15 @@ firebase.firestore()
     <Grid item>
   	<Box sx={{marginTop: 4}}>
   		<Divider style={{width: '100%'}}>
-        <div style={{fontSize: '24px', color: '#3e3e3e', fontWeight: 'bold'}}>
+        <div style={{fontSize: '24px', color: '#3e3e3e'}}>
         	Past Guestlists
         </div>
       </Divider>
   	</Box>
   </Grid>
+
     <Grid item>
-    	 <Box sx={{  maxWidth: 420, bgcolor: 'background.paper', margin: 4}}>
+    	 <Box sx={{  maxWidth: 500, minWidth: 450, bgcolor: 'background.paper', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 	        {
@@ -118,6 +118,9 @@ firebase.firestore()
 		    		return(
 		    			<div key={guestlist.id}>
 		    				<ListItem divider disablePadding >
+		    					<ListItemIcon style={{minWidth: '0px', margin: 2}}>
+                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
+              		</ListItemIcon>
 		    					<ListItemButton>
 		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
 		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
