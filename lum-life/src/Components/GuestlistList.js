@@ -8,24 +8,45 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import firebase from "firebase/compat/app";
-
-
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 export default function GuestlistList() {
 
-const [guestlists, setGuestlists] = useState();
-const [guestlistsSorted, setGuestlistsSorted] = useState();
+const [currentGuestlists, setCurrentGuestlists] = useState();
+const [currentGuestlistsSorted, setCurrentGuestlistsSorted] = useState();
+const [pastGuestlists, setPastGuestlists] = useState();
+const [pastGuestlistsSorted, setPastGuestlistsSorted] = useState();
+
+
+
+const currentDate = new Date(Date.now())
 
 useEffect(() => {
 firebase.firestore()
 .collection("guestlists")
+.where('event_date', '>', currentDate)
 .get()
 .then(guestlists => {
-	setGuestlists(guestlists.docs)
+	setCurrentGuestlists(guestlists.docs)
 	console.log(guestlists.docs[0].data())
 
 });
 }, []);
+
+
+useEffect(() => {
+firebase.firestore()
+.collection("guestlists")
+.where('event_date', '<', currentDate)
+.get()
+.then(guestlists => {
+	setPastGuestlists(guestlists.docs)
+	console.log(guestlists.docs[0].data())
+
+});
+}, []);
+
 
 
   return (
@@ -41,37 +62,77 @@ firebase.firestore()
 
   <Grid item>
   	<Box sx={{marginTop: 4}}>
-  		<h1 style={{color:'white'}}>Weekly Guestlist</h1>
+  		<Divider style={{width: '100%'}}>
+        <div style={{fontSize: '24px', color: '#3e3e3e'}}>
+        	Current Guestlists
+        </div>
+      </Divider>
   	</Box>
   </Grid>
 
   	<Grid item>
-	    <Box sx={{  maxWidth: 420, bgcolor: 'background.paper', margin: 4}}>
+	    <Box sx={{  maxWidth: 420, bgcolor: 'white', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
-
 	        {
-    		guestlists && guestlists.sort((a,b) => b.data().event_date.seconds - a.data().event_date.seconds).map(guestlist => {
-    		return(
-    			<div fontSize="12px" key={guestlist.id}>
-    			<ListItem disablePadding >
-    				 <ListItemButton>
-    				 	<ListItemText>
-    				 	{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
-    				 	</ListItemText>
-    			 	</ListItemButton>
-	          </ListItem>
-	          <Divider />
-	          </div>
-	          )
-    	})}
+		    		currentGuestlists && currentGuestlists.sort((a,b) => b.data().event_date.seconds - a.data().event_date.seconds).map(guestlist => {
+		    		return(
+		    			<div key={guestlist.id}>
+		    				<ListItem divider disablePadding >
+
+		    					<ListItemIcon style={{minWidth: '0px', margin: 2}}>
+                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon /> : <MusicNoteIcon />}
+              		</ListItemIcon>
+
+
+		    					<ListItemButton>
+		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
+		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
+		    				 			{guestlist.data().event_type}
+		    				 		</ListItemText>
+		    			 		</ListItemButton>
+			          </ListItem>
+			        </div>
+			          )
+    			})}
 	        </List>
 	      </nav>
 	    </Box>
     </Grid>
+
     <Grid item>
-    	
+  	<Box sx={{marginTop: 4}}>
+  		<Divider style={{width: '100%'}}>
+        <div style={{fontSize: '24px', color: '#3e3e3e', fontWeight: 'bold'}}>
+        	Past Guestlists
+        </div>
+      </Divider>
+  	</Box>
+  </Grid>
+    <Grid item>
+    	 <Box sx={{  maxWidth: 420, bgcolor: 'background.paper', margin: 4}}>
+	      <nav aria-label="secondary mailbox folders">
+	        <List disablePadding>
+	        {
+		    		pastGuestlists && pastGuestlists.sort((a,b) => b.data().event_date.seconds - a.data().event_date.seconds).map(guestlist => {
+		    		return(
+		    			<div key={guestlist.id}>
+		    				<ListItem divider disablePadding >
+		    					<ListItemButton>
+		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
+		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
+		    				 		</ListItemText>
+		    			 		</ListItemButton>
+			          </ListItem>
+			        </div>
+			          )
+    			})}
+	        </List>
+	      </nav>
+	    </Box>
     </Grid>
+
+
    </Grid>
   );
 }
