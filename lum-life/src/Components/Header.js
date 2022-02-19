@@ -2,6 +2,7 @@ import React from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Icon from '@mui/material/IconButton';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
@@ -15,6 +16,9 @@ import MenuItem from '@mui/material/MenuItem';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid';
+import SvgIcon from '@mui/material/SvgIcon';
+import DiscordIcon from '../Assets/Discord-Logo-White.svg'
+
 
 
 const pages = ['FAQ', 'History'];
@@ -52,11 +56,16 @@ const ResponsiveAppBar = () => {
 
     {/* This section is for a md+ screen */}
     <Box sx={{display:{ xs: 'none', md: 'flex' }, justifyContent: 'space-between', width: '100%'} }>
-        <Grid container
+      <Grid 
+        container
         direction="row"
         justifyContent="center"
-        alignItems="center">
-        	<Grid item xs={4}>
+        alignItems="center"
+      >
+        <Grid 
+          item 
+          xs={4}
+        >
           <Typography
             variant="h4"
             sx={{ my: 2}}
@@ -64,19 +73,57 @@ const ResponsiveAppBar = () => {
             Lum Life
           </Typography>
         </Grid>
-        <Grid item xs={4} align="center">
-        	<Link href="https://twitter.com/HoodlumsNFT" target="_blank">
-            	<TwitterIcon  sx={{ my: 3, color: 'white', display: 'block'}} />   
-            </Link>    
+        <Grid 
+          item 
+          xs={4} 
+          align="center"
+        >
+          <Grid 
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+          
+          	<Link 
+              href="https://twitter.com/HoodlumsNFT" 
+              target="_blank"
+            >
+              <TwitterIcon  
+                sx={{color: 'white', marginRight: 3}} 
+              />   
+            </Link> 
+            
+            <Link 
+              href="https://discord.gg/XSHq5Savy8" 
+              target="_blank"
+            >
+
+                <img 
+                  src={DiscordIcon} 
+                  height={24} 
+                  width={24}
+                  style={{marginLeft: 3}}
+                />
+
+            </Link>
+
+          </Grid>
         </Grid>
-        <Grid item xs={4} align="end">
-        	<ButtonGroup variant="text">
-	        {pages.map((page) => (
-	          <Button
-	            key={page}
-	            onClick={handleCloseNavMenu}
-	            sx={{ color: 'white', display: 'block', fontWeight:'bold' }}
-	          >
+        <Grid 
+          item 
+          xs={4} 
+          align="end"
+        >
+        	<ButtonGroup 
+            variant="text"
+          >
+	         {pages.map((page) => (
+	           <Button
+	             key={page}
+	             onClick={handleCloseNavMenu}
+	             sx={{ color: 'white', display: 'block', fontWeight:'bold' }}
+	           >
 	            {page}
 	          </Button>
 	        ))}
@@ -100,10 +147,42 @@ const ResponsiveAppBar = () => {
             Lum Life
           </Typography>
         </Grid>
-        <Grid item xs={4} align="center">
-        	<Link href="https://twitter.com/HoodlumsNFT" target="_blank">
-            	<TwitterIcon  sx={{ my: 3, color: 'white', display: 'block'}} />   
-            </Link>    
+        <Grid 
+          item 
+          xs={4} 
+          align="center"
+        >
+          <Grid 
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+          
+            <Link 
+              href="https://twitter.com/HoodlumsNFT" 
+              target="_blank"
+            >
+              <TwitterIcon  
+                sx={{color: 'white', marginRight: 3}} 
+              />   
+            </Link> 
+            
+            <Link 
+              href="https://discord.gg/XSHq5Savy8" 
+              target="_blank"
+            >
+
+                <img 
+                  src={DiscordIcon} 
+                  height={24} 
+                  width={24}
+                  style={{marginLeft: 3}}
+                />
+
+            </Link>
+
+          </Grid>
         </Grid>
           <Grid item xs={4} align="end">
             <IconButton
