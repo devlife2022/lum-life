@@ -14,22 +14,23 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 export default function GuestlistList() {
 
 const [currentGuestlists, setCurrentGuestlists] = useState();
-const [currentGuestlistsSorted, setCurrentGuestlistsSorted] = useState();
 const [pastGuestlists, setPastGuestlists] = useState();
-const [pastGuestlistsSorted, setPastGuestlistsSorted] = useState();
 
 
 
-const currentDate = new Date(Date.now())
+
+const currentDate = new Date(new Date().setHours(0,0,0,0))
+
 
 useEffect(() => {
 firebase.firestore()
 .collection("guestlists")
-.where('event_date', '>', currentDate)
+.where('event_date', '>=', currentDate)
 .get()
 .then(guestlists => {
+	console.log(currentDate)
 	setCurrentGuestlists(guestlists.docs)
-	console.log(guestlists.docs[0].data())
+	console.log(guestlists.docs[0].data().event_date)
 
 });
 }, []);
@@ -79,15 +80,15 @@ firebase.firestore()
 		    		return(
 		    			<div key={guestlist.id}>
 		    				<ListItem divider disablePadding >
-
-		    					<ListItemIcon style={{minWidth: '0px', margin: 2}}>
-                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
-              		</ListItemIcon>
-
-
 		    					<ListItemButton>
-		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
-		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
+			    					<ListItemIcon >
+	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
+	              		</ListItemIcon>
+		    				 		<ListItemText 
+		    				 			primaryTypographyProps={{fontSize: '0.9em'}}
+		    				 			primary={new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
+		    				 			secondary={guestlist.data().event_city + ", " + guestlist.data().event_state}	
+		    				 			 >
 		    				 		</ListItemText>
 		    			 		</ListItemButton>
 			          </ListItem>
@@ -110,7 +111,7 @@ firebase.firestore()
   </Grid>
 
     <Grid item>
-    	 <Box sx={{  maxWidth: 500,  bgcolor: 'background.paper', margin: 4}}>
+	    <Box sx={{  maxWidth: 500,  bgcolor: 'white', margin: 4}}>
 	      <nav aria-label="secondary mailbox folders">
 	        <List disablePadding>
 	        {
@@ -118,12 +119,15 @@ firebase.firestore()
 		    		return(
 		    			<div key={guestlist.id}>
 		    				<ListItem divider disablePadding >
-		    					<ListItemIcon style={{minWidth: '0px', margin: 2}}>
-                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
-              		</ListItemIcon>
 		    					<ListItemButton>
-		    				 		<ListItemText primaryTypographyProps={{fontSize: '0.75em'}} >
-		    				 			{new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us")} - {guestlist.data().event_name} - {guestlist.data().event_city}
+			    					<ListItemIcon >
+	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
+	              		</ListItemIcon>
+		    				 		<ListItemText 
+		    				 			primaryTypographyProps={{fontSize: '0.9em'}}
+		    				 			primary={new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
+		    				 			secondary={guestlist.data().event_city + ", " + guestlist.data().event_state}	
+		    				 			 >
 		    				 		</ListItemText>
 		    			 		</ListItemButton>
 			          </ListItem>
