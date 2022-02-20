@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import ResponsiveAppBar from './Components/Header.js';
 import GuestlistList from './Components/GuestlistList.js';
 import LandingPageHeroImage from './Components/LandingPageHeroImage.js';
+import GuestlistLegend from './Components/GuestlistLegend.js';
 
 function App() {
   return ( 
@@ -15,6 +16,9 @@ function App() {
       </div>
       <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
         <LandingPageHeroImage/>
+      </Box>
+      <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
+        <GuestlistLegend/>
       </Box>
       <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
         <GuestlistList />

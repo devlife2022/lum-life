@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 import firebase from "firebase/compat/app";
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import FestivalIcon from '@mui/icons-material/Festival';
 
 export default function GuestlistList() {
 
@@ -82,12 +83,12 @@ firebase.firestore()
 		    				<ListItem divider disablePadding >
 		    					<ListItemButton>
 			    					<ListItemIcon >
-	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
+	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> :  guestlist.data().event_type == "Music" ?  <MusicNoteIcon sx={{color: '#649f9a'}} />  :  <FestivalIcon sx={{color: '#4FA862'}} />}
 	              		</ListItemIcon>
 		    				 		<ListItemText 
 		    				 			primaryTypographyProps={{fontSize: '0.9em'}}
-		    				 			primary={new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
-		    				 			secondary={guestlist.data().event_city + ", " + guestlist.data().event_state}	
+		    				 			primary={ guestlist.data().event_type == "Music Festival" ? new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + new Date(guestlist.data().event_end_date.seconds * 1000).toLocaleDateString("en-us")  + " - " + guestlist.data().event_name   : new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
+		    				 			secondary={guestlist.data().event_state == "" ? guestlist.data().event_city + ", " + guestlist.data().event_country : guestlist.data().event_city + ", " + guestlist.data().event_state}	
 		    				 			 >
 		    				 		</ListItemText>
 		    			 		</ListItemButton>
@@ -121,12 +122,12 @@ firebase.firestore()
 		    				<ListItem divider disablePadding >
 		    					<ListItemButton>
 			    					<ListItemIcon >
-	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> : <MusicNoteIcon sx={{color: '#649f9a'}} />}
+	                		{guestlist.data().event_type == "NBA" ? <SportsBasketballIcon sx={{color: '#f5876e'}} /> :  guestlist.data().event_type == "Music" ?  <MusicNoteIcon sx={{color: '#649f9a'}} />  :  <FestivalIcon sx={{color: '#4FA862'}} />}
 	              		</ListItemIcon>
 		    				 		<ListItemText 
 		    				 			primaryTypographyProps={{fontSize: '0.9em'}}
-		    				 			primary={new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
-		    				 			secondary={guestlist.data().event_city + ", " + guestlist.data().event_state}	
+		    				 			primary={ guestlist.data().event_type == "Music Festival" ? new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + new Date(guestlist.data().event_end_date.seconds * 1000).toLocaleDateString("en-us")  + " - " + guestlist.data().event_name   : new Date(guestlist.data().event_date.seconds * 1000).toLocaleDateString("en-us") + "  -  " + guestlist.data().event_name}
+		    				 			secondary={guestlist.data().event_state == "" ? guestlist.data().event_city + ", " + guestlist.data().event_country : guestlist.data().event_city + ", " + guestlist.data().event_state}	
 		    				 			 >
 		    				 		</ListItemText>
 		    			 		</ListItemButton>
