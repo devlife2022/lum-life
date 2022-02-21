@@ -16,7 +16,7 @@ export default function GuestlistLegend() {
 
   <Grid
   	container
-  	spacing={2}
+  	spacing={1}
   	direction="row"
   	alignItems="center"
   	justifyContent="center"

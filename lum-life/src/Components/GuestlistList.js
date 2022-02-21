@@ -11,6 +11,7 @@ import firebase from "firebase/compat/app";
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import FestivalIcon from '@mui/icons-material/Festival';
+import GuestlistLegend from './GuestlistLegend.js';
 
 export default function GuestlistList() {
 
@@ -64,11 +65,15 @@ firebase.firestore()
 
   <Grid item>
   	<Box sx={{marginTop: 4}}>
-  		<Divider style={{width: '100%'}}>
         <div style={{fontSize: '24px', color: '#3e3e3e'}}>
         	Current Guestlists
         </div>
-      </Divider>
+  	</Box>
+  </Grid>
+
+  <Grid item>
+  	<Box sx={{marginTop: 4}}>
+        <GuestlistLegend />
   	</Box>
   </Grid>
 
