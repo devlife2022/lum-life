@@ -14,7 +14,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import Link from '@mui/material/Link'
+import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import SvgIcon from '@mui/material/SvgIcon';
 import DiscordIcon from '../Assets/Discord-Logo-White.svg'
