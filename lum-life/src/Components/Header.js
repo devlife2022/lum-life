@@ -18,7 +18,7 @@ import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid';
 import SvgIcon from '@mui/material/SvgIcon';
 import DiscordIcon from '../Assets/Discord-Logo-White.svg'
-
+import { Link as RouterLink } from "react-router-dom";
 
 
 const pages = ['FAQ', 'History'];
@@ -66,12 +66,14 @@ const ResponsiveAppBar = () => {
           item 
           xs={4}
         >
+          <RouterLink to='/' style={{textDecoration: 'none'}}>
           <Typography
             variant="h4"
-            sx={{ my: 2}}
+            sx={{ my: 2, color: 'white'}}
           >
             Lum Life
           </Typography>
+          </RouterLink>
         </Grid>
         <Grid 
           item 
@@ -119,13 +121,15 @@ const ResponsiveAppBar = () => {
             variant="text"
           >
 	         {pages.map((page) => (
-	           <Button
-	             key={page}
-	             onClick={handleCloseNavMenu}
-	             sx={{ color: 'white', display: 'block', fontWeight:'bold' }}
-	           >
-	            {page}
-	          </Button>
+              <RouterLink to={'/' + page} style={{textDecoration: 'none'}}>
+    	           <Button
+    	             key={page}
+    	             onClick={handleCloseNavMenu}
+    	             sx={{ color: 'white', display: 'block', fontWeight:'bold' }}
+    	           >
+    	            {page}
+    	          </Button>
+              </RouterLink>
 	        ))}
 	        </ButtonGroup>
       	</Grid>
@@ -140,12 +144,14 @@ const ResponsiveAppBar = () => {
         justifyContent="center"
         alignItems="center">
         <Grid item xs={4}>
-          <Typography
-            variant="h5"
-            sx={{ my: 2}}
-          >
-            Lum Life
-          </Typography>
+          <RouterLink to='/' style={{textDecoration: 'none'}}>
+            <Typography
+              variant="h5"
+              sx={{ my: 2, color:'white'}}
+            >
+              Lum Life
+            </Typography>
+          </RouterLink>
         </Grid>
         <Grid 
           item 
@@ -215,9 +221,11 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
+                <RouterLink to={'/' + page} style={{textDecoration: 'none'}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+                </RouterLink>
               ))}
             </Menu>
           </Grid>

@@ -27,7 +27,7 @@ const currentDate = new Date(new Date().setHours(0,0,0,0))
 useEffect(() => {
 firebase.firestore()
 .collection("guestlists")
-.where('event_date', '>=', currentDate)
+.where('event_date', '>', currentDate)
 .get()
 .then(guestlists => {
 	console.log(currentDate)
@@ -41,7 +41,7 @@ firebase.firestore()
 useEffect(() => {
 firebase.firestore()
 .collection("guestlists")
-.where('event_date', '<', currentDate)
+.where('event_date', '>', currentDate)
 .get()
 .then(guestlists => {
 	setPastGuestlists(guestlists.docs)

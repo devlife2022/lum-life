@@ -1,12 +1,8 @@
-import logo from './logo.svg';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import ResponsiveAppBar from './Components/Header.js';
-import GuestlistList from './Components/GuestlistList.js';
-import LandingPageHeroImage from './Components/LandingPageHeroImage.js';
 
+import ResponsiveAppBar from './Components/Header.js';
+import { Outlet, Link, Route, Routes } from "react-router-dom";
+import LandingPage from './Components/LandingPage.js';
+import FAQPage from './Components/FAQPage.js';
 
 function App() {
   return ( 
@@ -14,12 +10,10 @@ function App() {
       <div>
         <ResponsiveAppBar />
       </div>
-      <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
-        <LandingPageHeroImage/>
-      </Box>
-      <Box sx={{justifyContent:'center', paddingLeft: 3, paddingRight: 3}} >
-        <GuestlistList />
-      </Box>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/FAQ' element={<FAQPage />} />
+      </Routes>
     </div>
   );
 }
