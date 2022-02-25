@@ -12,6 +12,7 @@ import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import FestivalIcon from '@mui/icons-material/Festival';
 import GuestlistLegend from './GuestlistLegend.js';
+import Link from '@mui/material/Link';
 
 export default function GuestlistList() {
 
@@ -70,7 +71,13 @@ firebase.firestore()
         </div>
   	</Box>
   </Grid>
-
+  <Grid item>
+  	<Box sx={{marginTop: 4}}>
+        <div style={{fontSize: '14px', color: '#3e3e3e'}}>
+        	(Somehoodlum art owners use <Link href="https://forms.gle/RiiDuSxn7BPepVvG9" target="_blank">  this form </Link> to RSVP for event)
+        </div>
+  	</Box>
+  </Grid>
   <Grid item>
   	<Box sx={{marginTop: 4}}>
         <GuestlistLegend />
