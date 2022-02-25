@@ -72,9 +72,11 @@ firebase.firestore()
   	</Box>
   </Grid>
   <Grid item>
-  	<Box sx={{marginTop: 4}}>
-        <div style={{fontSize: '14px', color: '#3e3e3e'}}>
-        	(Somehoodlum art owners use <Link href="https://forms.gle/RiiDuSxn7BPepVvG9" target="_blank">  this form </Link> to RSVP for event)
+  	<Box sx={{marginTop: 1}}>
+        <div style={{fontSize: '14px', color: '#3e3e3e', textAlign:'center'}}>
+        	Use <Link href="https://forms.gle/RiiDuSxn7BPepVvG9" target="_blank">  this form </Link> to RSVP for events.
+        	<br/>
+        	(Must own Somehoodlum art to RSVP)
         </div>
   	</Box>
   </Grid>
